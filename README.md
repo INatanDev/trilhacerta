@@ -151,8 +151,9 @@ Para adicionar uma dependência de desenvolvimento (ex: eslint, prettier, nodemo
 ```bash
 npm install -D nome-da-dependencia
 ```
-
----nom i -D @types/node tsup tsx typescript
+---npm i -D @types/node tsup tsx typescript
+--npm i fastify
+--npm i dotenv zod
 
 ## Configurações adicionais
 
