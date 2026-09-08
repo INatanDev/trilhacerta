@@ -152,10 +152,22 @@ Para adicionar uma dependência de desenvolvimento (ex: eslint, prettier, nodemo
 npm install -D nome-da-dependencia
 ```
 ---npm i -D @types/node tsup tsx typescript
+```
 ---npm i fastify
+```
 ---npm i dotenv zod
+```
+---npm i -D @typescript-eslint/eslint-plugin@6.21.0 @typescript-eslint/parser@6.21.0 eslint@8.57.0 eslint-config-prettier@9.1.0 eslint-config-standard@17.1.0 eslint-plugin-import@2.29.1 eslint-plugin-n@16.6.2 eslint-plugin-prettier@5.1.3 eslint-plugin-promise@6.1.1 prettier@3.2.5
+```
 
 ## Configurações adicionais
+```
+---npx tsc --init
+```
+```
+docker run -d --name myPostegres -p 5432:5432 -e POSTGRES_PASSWORD=123456 postgres:latest
+docker run -d --name myPostegres -p 5432:5432 -e POSTGRES_USER=user -e POSTGRES_PASSWORD=123456 postgres:latest
+```
 
 ### ESLint e Prettier (opcional)
 
