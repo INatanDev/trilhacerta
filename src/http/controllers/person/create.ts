@@ -1,5 +1,4 @@
-import { PersonRepository } from '@/repositories/person.repository'
-import { CreatePersonUseCase } from '@/use-cases/create-person'
+import { makeCreatePersonUseCase } from '@/use-cases/factory/make-create-person-use-case'
 import { FastifyReply, FastifyRequest } from 'fastify'
 import { z } from 'zod'
 
@@ -9,26 +8,20 @@ export async function create(request: FastifyRequest, reply: FastifyReply) {
         name: z.string(),
         birth: z.coerce.date(),
         email: z.string().email(),
+        user_id: z.coerce.number(),
     })
 
-    const { cpf, name, birth, email } = registerBodySchema.parse(request.body)
+    const { cpf, name, birth, email, user_id } = registerBodySchema.parse(request.body)
 
-    try {
-        const personRepository = new PersonRepository()
+    const createPersonUseCase = makeCreatePersonUseCase()
 
-        const createPersonUseCase = new CreatePersonUseCase(personRepository)
+    const person = await createPersonUseCase.create({
+        cpf,
+        name,
+        birth,
+        email,
+        user_id,
+    })
 
-        await createPersonUseCase.create({
-            cpf,
-            name,
-            birth,
-            email,
-        })
-
-        return reply.status(201).send()
-    } catch (error) {
-        console.error(error)
-
-        throw new Error('Internal Server Error')
-    }
+    return reply.status(201).send(`Criado a pessoa: ${person?.name}`)
 }

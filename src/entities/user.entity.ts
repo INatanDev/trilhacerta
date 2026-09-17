@@ -15,7 +15,7 @@ export class User implements IUser {
     password: string
 
     @Column({
-        name: 'role',
+        name: 'tipo',
         type: 'enum',
         enum: UserRole,
         default: UserRole.ALUNO,
