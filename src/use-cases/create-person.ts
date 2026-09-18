@@ -1,8 +1,8 @@
 import { Person } from '@/entities/person.entity'
-import { PersonRepository } from '@/repositories/typeorm/person.repository'
+import { IPersonRepository } from '@/repositories/person.repository.interface'
 
 export class CreatePersonUseCase {
-    constructor(private personRepository: PersonRepository) {}
+    constructor(private personRepository: IPersonRepository) {}
 
     create(person: Person) {
         return this.personRepository.create(person)
