@@ -38,6 +38,11 @@ export const errorHandlerMap: ErrorHandlerMap = {
             message: error.message,
         })
     },
+    CpfValidationError: (error, _, reply) => {
+        return reply.status(400).send({
+            message: error.message,
+        })
+    },
 }
 
 export const globalErrorHandler = (error: Error, _: FastifyRequest, reply: FastifyReply) => {

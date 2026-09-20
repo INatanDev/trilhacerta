@@ -1,6 +1,7 @@
-import { Column, Entity, JoinColumn, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
+import { Column, Entity, JoinColumn, OneToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm'
 import { User } from './user.entity'
 import { IPerson } from './models/person.interface'
+import { Address } from './address.entity'
 
 @Entity({ name: 'person' })
 export class Person implements IPerson {
@@ -22,4 +23,7 @@ export class Person implements IPerson {
     @OneToOne(() => User, (user) => user.person)
     @JoinColumn({ name: 'user_id' })
     user_id?: number
+
+    @OneToMany(() => Address, (address) => address.person)
+    address?: Address
 }

@@ -1,3 +1,4 @@
+import { Address } from '@/entities/address.entity'
 import { Person } from '@/entities/person.entity'
 import { User } from '@/entities/user.entity'
 import { env } from '@/env'
@@ -10,7 +11,7 @@ export const appDataSource = new DataSource({
     username: env.DATABASE_USER,
     password: env.DATABASE_PASSWORD,
     database: env.DATABASE_NAME,
-    entities: [User, Person],
+    entities: [User, Person, Address],
     migrations: [],
     logging: env.NODE_ENV === 'development',
 })
