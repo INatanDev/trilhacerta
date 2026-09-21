@@ -6,7 +6,7 @@ import { Repository } from 'typeorm'
 import { IPerson } from '@/entities/models/person.interface'
 
 export class UserRepository implements IUserRepository {
-    private repository: Repository<IUser>
+    private repository: Repository<User>
 
     constructor() {
         this.repository = appDataSource.getRepository(User)
